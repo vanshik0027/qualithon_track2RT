@@ -75,8 +75,7 @@ public class MoviePage extends Page{
         List<String> genres = new ArrayList<>();
         List<WebElement> credits = this.testSession.driverWait().until(
            
-
-            ExpectedConditions.presenceOfAllElementsLocatedBy(
+          ExpectedConditions.presenceOfAllElementsLocatedBy(
 
               By.cssSelector("div[data-testid='genres']")));
 
@@ -110,10 +109,9 @@ public class MoviePage extends Page{
     public String releaseYear(){
         return this.testSession.driverWait().until(
             ExpectedConditions.presenceOfElementLocated(
-                By.xpath("//*[@id='__next']/main/div/section[1]/section/div[3]/section/section/div[2]/div[1]/div/ul/li[1]/a")
-            ) 
-        ).getText();
+                By.xpath("//*[@id='__next']/main/div/section[1]/section/div[3]/section/section/div[2]/div[1]/div/ul/li[1]/a"))).getText();
     }
+
 
     /**
      * get list of movie writers

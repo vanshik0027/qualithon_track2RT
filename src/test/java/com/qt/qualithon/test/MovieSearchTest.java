@@ -23,6 +23,7 @@ public class MovieSearchTest {
     @BeforeMethod
     public void testSessionSetUp(){
         // init browser test session
+        
         this.testSession = TestSession.ChromeTestSession();
     }
 
