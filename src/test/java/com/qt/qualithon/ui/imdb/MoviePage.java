@@ -73,7 +73,28 @@ public class MoviePage extends Page{
      **/
     public List<String> genres(){
         List<String> genres = new ArrayList<>();
-        
+        List<WebElement> credits = this.testSession.driverWait().until(
+           
+
+            ExpectedConditions.presenceOfAllElementsLocatedBy(
+
+              By.cssSelector("div[data-testid='genres']")));
+
+
+
+        // traverse credits sections to find the section with Writers
+
+        for(WebElement credit:credits){
+
+            List<WebElement> genersElements = credit.findElements(By.cssSelector("a"));
+
+            for(int i = 0; i < genersElements.size() ; i++){
+
+                genres.add(genersElements.get(i).getText());
+
+            }
+
+        }
         // if genres list is empty throw exception
         if(genres.isEmpty()){
             throw new NoSuchElementException("Could not lookup genres on Movie page");
@@ -89,7 +110,7 @@ public class MoviePage extends Page{
     public String releaseYear(){
         return this.testSession.driverWait().until(
             ExpectedConditions.presenceOfElementLocated(
-                By.cssSelector("ul[data-testid='hero-title-block__metadata']")
+                By.xpath("//*[@id='__next']/main/div/section[1]/section/div[3]/section/section/div[2]/div[1]/div/ul/li[1]/a")
             ) 
         ).getText();
     }
@@ -108,10 +129,10 @@ public class MoviePage extends Page{
         // traverse credits sections to find the section with Writers
         for(WebElement credit:credits){
             try{
-                if(credit.findElement(By.cssSelector("span")).getText().equalsIgnoreCase("Writers")){
+                if(credit.findElement(By.cssSelector("span")).getText().equalsIgnoreCase("writers")){
                     // traverse list of writers on page to add to writers list
                     List<WebElement> writersElements = credit.findElements(By.cssSelector("a"));
-                    for(int i = writersElements.size()-1; i >= 0 ; i--){
+                    for(int i = 0; i < writersElements.size() ; i++){
                         writers.add(writersElements.get(i).getText());
                     }
                     break;
