@@ -109,7 +109,7 @@ public class MoviePage extends Page{
     public String releaseYear(){
         return this.testSession.driverWait().until(
             ExpectedConditions.presenceOfElementLocated(
-            By.cssSelector("div.sc-94726ce4-2.khmuXj > div > ul > li:nth-child(1) > a"))).getText();
+            By.cssSelector("main div section div.sc-94726ce4-0.cMYixt li:nth-child(1) a"))).getText();
     }
 
 
@@ -122,7 +122,7 @@ public class MoviePage extends Page{
         List<String> writers = new ArrayList<>();
         List<WebElement> credits = this.testSession.driverWait().until(
             ExpectedConditions.presenceOfAllElementsLocatedBy(
-              By.cssSelector("div.sc-1cdfe45a-4.wrDNM > div.sc-fa02f843-0.fjLeDR > ul > li:nth-child(2) > div")));
+              By.cssSelector("div:nth-child(4) div.sc-fa02f843-0.fjLeDR li:nth-child(2) div")));
 
         // traverse credits sections to find the section with Writers
         for(WebElement credit:credits){
@@ -143,6 +143,27 @@ public class MoviePage extends Page{
             throw new NoSuchElementException("Could not lookup Writers on movie page");
         }
         return writers;
+    }
+
+    /**
+     * get movie rated
+     *
+     * @return    movie rated
+     **/
+    public String rated(){
+        return this.testSession.driverWait().until(
+            ExpectedConditions.presenceOfElementLocated(
+            By.cssSelector("main div section div.sc-94726ce4-0.cMYixt li:nth-child(2) a"))).getText();
+    }
+    /**
+     * get ImdbRating
+     *
+     * @return    ImdbRating
+     **/
+    public String ImdbRating(){
+        return this.testSession.driverWait().until(
+            ExpectedConditions.presenceOfElementLocated(
+            By.cssSelector("main div section div:nth-child(4) div.sc-94726ce4-0.cMYixt span.sc-7ab21ed2-1.jGRxWM"))).getText();
     }
 
 }

@@ -154,8 +154,17 @@ public class MovieSearchTest {
      **/
     @Test(dataProvider = "popularMovieTitles")
     public void testMovieMetadataOnWebHasCorrectMaturityRating(String title) throws Exception {
-        // NOT IMPLEMENTED
-        throw new Exception("Test Pending");
+       
+         // get MoviePage from imdb/rottentomato
+         MoviePage movieOnImdbWeb = new WebApp(this.testSession)
+         .launch()
+         .search(title)
+         .firstMovieResult();
+
+     // get Movie metadata from http://www.omdbapi.com/
+     Movie movie = new OMDbAPI().getMovie(title);
+     assertThat(movieOnImdbWeb.rated()).isEqualTo(movie.rated());
+      
     }
     /**
      * test that movie rating score on movie page (IMDB Rating, Tomatometer) is correct compared to the
@@ -166,7 +175,16 @@ public class MovieSearchTest {
      **/
     @Test(dataProvider = "popularMovieTitles")
     public void testMovieMetadataOnWebHasCorrectMovieRatingScore(String title) throws Exception {
-        // NOT IMPLEMENTED
-        throw new Exception("Test Pending");
+       
+         // get MoviePage from imdb/rottentomato
+         MoviePage movieOnImdbWeb = new WebApp(this.testSession)
+         .launch()
+         .search(title)
+         .firstMovieResult();
+
+     // get Movie metadata from http://www.omdbapi.com/
+     Movie movie = new OMDbAPI().getMovie(title);
+     assertThat(movieOnImdbWeb.ImdbRating()).isEqualTo(movie.ImdbRating());
+       
     }
 }
