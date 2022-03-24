@@ -109,7 +109,7 @@ public class MoviePage extends Page{
     public String releaseYear(){
         return this.testSession.driverWait().until(
             ExpectedConditions.presenceOfElementLocated(
-                By.xpath("//*[@id='__next']/main/div/section[1]/section/div[3]/section/section/div[2]/div[1]/div/ul/li[1]/a"))).getText();
+            By.cssSelector("div.sc-94726ce4-2.khmuXj > div > ul > li:nth-child(1) > a"))).getText();
     }
 
 
@@ -122,19 +122,19 @@ public class MoviePage extends Page{
         List<String> writers = new ArrayList<>();
         List<WebElement> credits = this.testSession.driverWait().until(
             ExpectedConditions.presenceOfAllElementsLocatedBy(
-              By.cssSelector("li.ipc-metadata-list__item")));
+              By.cssSelector("div.sc-1cdfe45a-4.wrDNM > div.sc-fa02f843-0.fjLeDR > ul > li:nth-child(2) > div")));
 
         // traverse credits sections to find the section with Writers
         for(WebElement credit:credits){
             try{
-                if(credit.findElement(By.cssSelector("span")).getText().equalsIgnoreCase("writers")){
+                
                     // traverse list of writers on page to add to writers list
                     List<WebElement> writersElements = credit.findElements(By.cssSelector("a"));
                     for(int i = 0; i < writersElements.size() ; i++){
                         writers.add(writersElements.get(i).getText());
                     }
                     break;
-                }
+                
             }catch(NoSuchElementException e){}
         }
 

@@ -157,7 +157,6 @@ public class MovieSearchTest {
         // NOT IMPLEMENTED
         throw new Exception("Test Pending");
     }
-
     /**
      * test that movie rating score on movie page (IMDB Rating, Tomatometer) is correct compared to the
      * movie rating score in OMDb Test Data API
