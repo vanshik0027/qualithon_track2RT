@@ -42,89 +42,89 @@ public class MovieSearchTest {
     @DataProvider
     public Object[][] popularMovieTitles() {
         return new Object [][] {
-            {"A Clockwork Orange"}
-          //{"The Dark Knight Rises"}
+            {"A Clockwork Orange"},
+          {"The Dark Knight Rises"}
         };
     }
   
-    // /**
-    //  * test that user should be able to search movie titles by exact title name 
-    //  * and see the movie metadata
-    //  *
-    //  * @param   title   movie title to search
-    //  *
-    //  **/
-    // @Test(dataProvider = "popularMovieTitles")
-    // public void testSearchByExactMovieTitleReturnsMovieAsFirstResult(String title){
-    //     // get MoviePage from imdb/rottentomato
-    //     MoviePage movieOnRTWeb = new WebApp(this.testSession)
-    //         .launch()
-    //         .search(title)
-    //         .firstMovieResult();
+    /**
+     * test that user should be able to search movie titles by exact title name 
+     * and see the movie metadata
+     *
+     * @param   title   movie title to search
+     *
+     **/
+    @Test(dataProvider = "popularMovieTitles")
+    public void testSearchByExactMovieTitleReturnsMovieAsFirstResult(String title){
+        // get MoviePage from imdb/rottentomato
+        MoviePage movieOnRTWeb = new WebApp(this.testSession)
+            .launch()
+            .search(title)
+            .firstMovieResult();
 
-    //     assertThat(movieOnRTWeb.title()).isEqualTo(title.toUpperCase());
-    // }
+        assertThat(movieOnRTWeb.title()).isEqualTo(title.toUpperCase());
+    }
 
-    // /**
-    //  * test that release year on movie page is correct compared to the 
-    //  * movie metadata on OMDb Test Data
-    //  *
-    //  * @param   title   movie title to search
-    //  *
-    //  **/
-    // @Test(dataProvider = "popularMovieTitles")
-    // public void testMovieMetadataOnWebHasCorrectReleaseYear(String title) throws Exception {
-    //     // get MoviePage from imdb/rottentomato
-    //     MoviePage movieOnRTWeb = new WebApp(this.testSession)
-    //         .launch()
-    //         .search(title)
-    //         .firstMovieResult();
+    /**
+     * test that release year on movie page is correct compared to the 
+     * movie metadata on OMDb Test Data
+     *
+     * @param   title   movie title to search
+     *
+     **/
+    @Test(dataProvider = "popularMovieTitles")
+    public void testMovieMetadataOnWebHasCorrectReleaseYear(String title) throws Exception {
+        // get MoviePage from imdb/rottentomato
+        MoviePage movieOnRTWeb = new WebApp(this.testSession)
+            .launch()
+            .search(title)
+            .firstMovieResult();
 
-    //     // get Movie metadata from http://www.omdbapi.com/
-    //     Movie movie = new OMDbAPI().getMovie(title);
-    //     assertThat(movieOnRTWeb.releaseYear()).isEqualTo(movie.releaseYear());
-    // }
+        // get Movie metadata from http://www.omdbapi.com/
+        Movie movie = new OMDbAPI().getMovie(title);
+        assertThat(movieOnRTWeb.releaseYear()).isEqualTo(movie.releaseYear());
+    }
 
-//     /**
-//      * test that director name on movie page is correct compared to the 
-//      * movie metadata on OMDb Test Data
-//      *
-//      * @param   title   movie title to search
-//      *
-//      **/
-//     @Test(dataProvider = "popularMovieTitles")
-//     public void testMovieMetadataOnWebHasCorrectDirectorName(String title) throws Exception {
-//         // get MoviePage from imdb/rottentomato
-//         MoviePage movieOnRTWeb = new WebApp(this.testSession)
-//             .launch()
-//             .search(title)
-//             .firstMovieResult();
+    /**
+     * test that director name on movie page is correct compared to the 
+     * movie metadata on OMDb Test Data
+     *
+     * @param   title   movie title to search
+     *
+     **/
+    @Test(dataProvider = "popularMovieTitles")
+    public void testMovieMetadataOnWebHasCorrectDirectorName(String title) throws Exception {
+        // get MoviePage from imdb/rottentomato
+        MoviePage movieOnRTWeb = new WebApp(this.testSession)
+            .launch()
+            .search(title)
+            .firstMovieResult();
 
-//         // get Movie metadata from http://www.omdbapi.com/
-//         Movie movie = new OMDbAPI().getMovie(title);
-//         assertThat(movieOnRTWeb.director()).isEqualTo(movie.director());
-//     }
+        // get Movie metadata from http://www.omdbapi.com/
+        Movie movie = new OMDbAPI().getMovie(title);
+        assertThat(movieOnRTWeb.director()).isEqualTo(movie.director());
+    }
 
-    // /**
-    //  * test that writers on movie page are correct compared to the 
-    //  * movie metadata on OMDb Test Data
-    //  *
-    //  * @param   title   movie title to search
-    //  *
-    //  **/
-    // @Test(dataProvider = "popularMovieTitles")
-    // public void testMovieMetadataOnWebHasCorrectWriters(String title) throws Exception {
-    //     // get MoviePage from imdb/rottentomato
-    //     MoviePage movieOnRTWeb = new WebApp(this.testSession)
-    //         .launch()
-    //         .search(title)
-    //         .firstMovieResult();
+    /**
+     * test that writers on movie page are correct compared to the 
+     * movie metadata on OMDb Test Data
+     *
+     * @param   title   movie title to search
+     *
+     **/
+    @Test(dataProvider = "popularMovieTitles")
+    public void testMovieMetadataOnWebHasCorrectWriters(String title) throws Exception {
+        // get MoviePage from imdb/rottentomato
+        MoviePage movieOnRTWeb = new WebApp(this.testSession)
+            .launch()
+            .search(title)
+            .firstMovieResult();
 
-    //     // get Movie metadata from http://www.omdbapi.com/
-    //     Movie movie = new OMDbAPI().getMovie(title);
+        // get Movie metadata from http://www.omdbapi.com/
+        Movie movie = new OMDbAPI().getMovie(title);
     
-    //     assertThat(movieOnRTWeb.writers()).isEqualTo(movie.writers());
-    // }
+        assertThat(movieOnRTWeb.writers()).isEqualTo(movie.writers());
+    }
 
     // /**
     //  * test that movie genres on movie page are correct compared to the 
