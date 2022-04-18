@@ -1,4 +1,4 @@
-package com.qt.qualithon.ui.imdb;
+package com.qt.qualithon.ui.RottenTomatoes;
 
 import com.qt.qualithon.TestSession;
 import com.qt.qualithon.ui.Page;
@@ -12,7 +12,7 @@ import org.openqa.selenium.WebElement;
 import java.util.List;
 
 /**
- * represents IMDb web search results page elements and actions (page object)
+ * represents Rotten Tomatoes web search results page elements and actions (page object)
  **/
 public class ResultsPage extends Page{
 
@@ -28,7 +28,7 @@ public class ResultsPage extends Page{
     public List<WebElement> movieResultLinks(){
         List<WebElement> resultLinks = this.testSession.driverWait().until(
             ExpectedConditions.visibilityOfAllElementsLocatedBy(
-                By.cssSelector(".findList .findResult a")
+                By.cssSelector("search-page-result:nth-child(3) search-page-media-row:nth-child(1) a img")
             )
         );
         return resultLinks;

@@ -1,4 +1,4 @@
-package com.qt.qualithon.ui.imdb;
+package com.qt.qualithon.ui.RottenTomatoes;
 
 import com.qt.qualithon.TestSession;
 import com.qt.qualithon.ui.Page;
@@ -8,11 +8,13 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 
+import java.sql.Driver;
 import java.util.List;
 
 /**
- * represents IMDb Web Home Page elements and ui actions (page object)
+ * represents Rotten Tomatoes Web Home Page elements and ui actions (page object)
  **/
 public class HomePage extends Page {
 
@@ -29,11 +31,13 @@ public class HomePage extends Page {
     public ResultsPage search(String movieTitle){
         WebElement searchInput = this.testSession.driverWait().until(
             ExpectedConditions.visibilityOfElementLocated(
-                By.cssSelector("input#suggestion-search")
+                By.cssSelector("input.search-text")
             )
         );
         searchInput.sendKeys(movieTitle);
-        searchInput.submit();
+        searchInput.sendKeys(Keys.ENTER);
+        
+       //searchInput.click();
 
         return new ResultsPage(this.testSession);
     }
